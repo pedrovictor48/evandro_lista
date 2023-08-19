@@ -1,17 +1,20 @@
 import pandas as pd
 import math
 
+TARGET_NAME = str()
+FILE_PATH = str()
+
 
 def entropy(df, tab_number=0, printar=True):
     somatorio = 0
     if printar:
         print("\t"*tab_number + "Entropia = ", end="")
-        for value in df['Risco'].unique():
+        for value in df[TARGET_NAME].unique():
             print(f"- p_{value}*log2(p_{value}) ", end="")
         print()
     if printar:
         print("\t"*tab_number + "Entropia = ", end="")
-    for value in df['Risco'].unique():
+    for value in df[TARGET_NAME].unique():
         numerador = len(df[df.Risco == value])
         denominador = len(df)
         p_i = len(df[df.Risco == value]) / len(df)
@@ -67,8 +70,8 @@ def walk_tree(df, tab_num, list_ands):
     print("\t"*tab_num + "Nesse no, a tabela fica assim:")
     print_df(df, tab_num)
     # print(df)
-    if len(df['Risco'].unique()) == 1:
-        valor_unico = df['Risco'].unique()[0]
+    if len(df[TARGET_NAME].unique()) == 1:
+        valor_unico = df[TARGET_NAME].unique()[0]
         print("\t"*tab_num + f"Como a tabela tem entropia 0, temos uma folha de valor {valor_unico}")
         print("\t"*tab_num + "Entao, entra na lista a regra ", end="")
         print_se_entao(list_ands, valor_unico, tab_num)
@@ -78,7 +81,7 @@ def walk_tree(df, tab_num, list_ands):
     max_gain = -1e6
     chose = str()
     for col in df.columns:
-        if col == "Risco":
+        if col == TARGET_NAME:
             continue
         print("\t"*tab_num + f"Ganho de info. para o campo {col}")
         atual = info_gain(df, col, tab_num+1)
@@ -94,7 +97,13 @@ def walk_tree(df, tab_num, list_ands):
 
 
 def main():
-    df = pd.read_csv("./data_risk.csv")
+    global TARGET_NAME
+    global FILE_PATH
+
+    FILE_PATH = input("Caminho do arquivo: ")
+    TARGET_NAME = input("Nome da coluna classificadora: ")
+
+    df = pd.read_csv(FILE_PATH)
     walk_tree(df, 0, [])
 
     print("------")
