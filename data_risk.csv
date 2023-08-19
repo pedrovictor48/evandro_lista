@@ -1,0 +1,15 @@
+Historia de Credito,Divida,Garantia,Renda,Risco
+Ruim,Alta,Nenhuma,0a15,Alto
+Desconhecida,Alta,Nenhuma,15a35,Alto
+Desconhecida,Baixa,Nenhuma,15a35,Moderado
+Desconhecida,Baixa,Nenhuma,0a15,Alto
+Desconhecida,Baixa,Nenhuma,Acima35,Baixo
+Desconhecida,Baixa,Adequada,Acima35,Baixo
+Ruim,Baixa,Nenhuma,0a15,Alto
+Ruim,Baixa,Adequada,Acima35,Moderado
+Boa,Baixa,Nenhuma,Acima35,Baixo
+Boa,Alta,Adequada,Acima35,Baixo
+Boa,Alta,Nenhuma,0a15,Alto
+Boa,Alta,Nenhuma,15a35,Moderado
+Boa,Alta,Nenhuma,Acima35,Baixo
+Ruim,Alta,Nenhuma,15a35,Alto
